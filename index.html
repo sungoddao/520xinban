@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我们的婚礼记忆</title>
+    <title>Our Wedding Memory | 我们的婚礼记忆</title>
     <link rel="icon" href="./520.png" type="image/x-icon">
     <style>
         /* 全局样式 */
@@ -1577,29 +1577,40 @@
         
         @media screen and (max-width: 768px) {
             .music-player {
-                right: 50%;
-                bottom: 2rem;
-                top: auto;
-                transform: translateX(50%);
-                padding: 1rem;
-                flex-direction: row;
-                max-width: 300px;
+                right: 1rem;
+                top: 50%;
+                bottom: auto;
+                transform: translateY(-50%);
+                padding: 0.5rem;
+                border-radius: 50%;
+                background: linear-gradient(145deg, var(--gold), #B4943A);
+                width: 40px;
+                height: 40px;
             }
             .music-player-inner {
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: center;
                 width: 100%;
+                gap: 0;
+            }
+            .music-info,
+            .volume-control {
+                display: none;
             }
             .music-controls {
                 flex-direction: row;
+                gap: 0;
             }
             .play-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+                background: none;
+                box-shadow: none;
             }
-            .volume-slider {
-                width: 60px;
+            .play-btn:hover {
+                transform: none;
+                box-shadow: none;
             }
         }
         /* 祝福弹窗样式 */
@@ -1700,6 +1711,48 @@
                 font-size: 1.8rem;
             }
         }
+        /* 语言切换按钮样式 */
+        
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 5rem;
+            z-index: 1001;
+            background: linear-gradient(145deg, var(--gold), #B4943A);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            font-family: "Dancing Script", cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .language-switcher:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .language-switcher {
+                top: 0.8rem;
+                right: 4rem;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        [data-lang="en"] .zh,
+        [data-lang="zh"] .en {
+            display: none;
+        }
+        
+        [data-lang="en"] .en,
+        [data-lang="zh"] .zh {
+            display: inline-block;
+        }
     </style>
     <!-- 引入字体图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -1708,6 +1761,12 @@
 </head>
 
 <body>
+    <!-- 语言切换按钮 -->
+    <button class="language-switcher" id="langSwitcher">
+        <span class="zh">EN</span>
+        <span class="en">中文</span>
+    </button>
+
     <!-- 导航栏 -->
     <nav class="navbar">
         <button class="hamburger">
@@ -1716,21 +1775,59 @@
             <span></span>
         </button>
         <ul class="nav-list">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#story">我们的故事</a></li>
-            <li><a href="#moments">婚礼瞬间</a></li>
-            <li><a href="#wishes">宾客祝福</a></li>
-            <li><a href="#gallery">相册</a></li>
+            <li>
+                <a href="#home">
+                    <span class="zh">首页</span>
+                    <span class="en">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#story">
+                    <span class="zh">我们的故事</span>
+                    <span class="en">Our Story</span>
+                </a>
+            </li>
+            <li>
+                <a href="#moments">
+                    <span class="zh">婚礼瞬间</span>
+                    <span class="en">Wedding Moments</span>
+                </a>
+            </li>
+            <li>
+                <a href="#wishes">
+                    <span class="zh">宾客祝福</span>
+                    <span class="en">Blessings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#gallery">
+                    <span class="zh">相册</span>
+                    <span class="en">Gallery</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
     <!-- 英雄区 -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">张三 & 李四</h1>
-            <p class="hero-date">2024年1月1日</p>
+            <h1 class="hero-title">
+                <span class="zh">张三 & 李四</span>
+                <span class="en">Zhang San & Li Si</span>
+            </h1>
+            <p class="hero-date">
+                <span class="zh">2024年1月1日</span>
+                <span class="en">January 1st, 2024</span>
+            </p>
             <p class="hero-text">
-                在这个特别的日子里，我们携手走进婚姻的殿堂<br> 让我们的爱情故事在此刻永恒定格
+                <span class="zh">
+                    在这个特别的日子里，我们携手走进婚姻的殿堂<br>
+                    让我们的爱情故事在此刻永恒定格
+                </span>
+                <span class="en">
+                    On this special day, we step into the hall of marriage together<br>
+                    Let our love story be eternally captured in this moment
+                </span>
             </p>
         </div>
         <div class="hero-scroll">
@@ -1738,59 +1835,98 @@
         </div>
     </section>
 
-    <!-- 在 hero section 后面添加以下 HTML -->
+    <!-- 计时器部分 -->
     <section class="counter-section">
         <div class="counter-container">
-            <h2 class="counter-title">婚姻誓言守护时刻</h2>
+            <h2 class="counter-title">
+                <span class="zh">婚姻誓言守护时刻</span>
+                <span class="en">Marriage Vow Guardian Moment</span>
+            </h2>
             <div class="counter-display detailed">
                 <div class="time-unit">
                     <div class="counter-number" id="daysCounter">0</div>
-                    <div class="counter-text">天</div>
+                    <div class="counter-text">
+                        <span class="zh">天</span>
+                        <span class="en">Days</span>
+                    </div>
                 </div>
                 <div class="time-unit">
                     <div class="counter-number" id="hoursCounter">0</div>
-                    <div class="counter-text">小时</div>
+                    <div class="counter-text">
+                        <span class="zh">小时</span>
+                        <span class="en">Hours</span>
+                    </div>
                 </div>
                 <div class="time-unit">
                     <div class="counter-number" id="minutesCounter">0</div>
-                    <div class="counter-text">分钟</div>
+                    <div class="counter-text">
+                        <span class="zh">分钟</span>
+                        <span class="en">Minutes</span>
+                    </div>
                 </div>
                 <div class="time-unit">
                     <div class="counter-number" id="secondsCounter">0</div>
-                    <div class="counter-text">秒</div>
+                    <div class="counter-text">
+                        <span class="zh">秒</span>
+                        <span class="en">Seconds</span>
+                    </div>
                 </div>
             </div>
-            <p class="counter-description">每一秒都是爱的见证与承诺</p>
+            <p class="counter-description">
+                <span class="zh">每一秒都是爱的见证与承诺</span>
+                <span class="en">Every second is a witness and promise of love</span>
+            </p>
         </div>
     </section>
 
     <!-- 我们的故事模块 -->
     <section id="story" class="story-section">
-        <h2 class="story-title">我们的故事</h2>
+        <h2 class="story-title">
+            <span class="zh">我们的故事</span>
+            <span class="en">Our Story</span>
+        </h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">2020年春天</div>
-                    <img src="first-meet.jpg" alt="初次相遇" class="timeline-image">
-                    <p class="timeline-text">在那个樱花盛开的季节，我们在咖啡馆偶然相遇。一杯咖啡，一段对话，开启了我们的故事。</p>
+                    <div class="timeline-date">
+                        <span class="zh">2020年春天</span>
+                        <span class="en">Spring 2020</span>
+                    </div>
+                    <img src="first-meet.jpg" alt="First Meeting" class="timeline-image">
+                    <p class="timeline-text">
+                        <span class="zh">在那个樱花盛开的季节，我们在咖啡馆偶然相遇。一杯咖啡，一段对话，开启了我们的故事。</span>
+                        <span class="en">In the season of cherry blossoms, we met by chance at a café. One coffee, one conversation, and our story began.</span>
+                    </p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">2022年冬天</div>
-                    <img src="proposal.jpg" alt="求婚时刻" class="timeline-image">
-                    <p class="timeline-text">在飘雪的平安夜，我单膝跪地，向她许下了一生的承诺。她含着泪水说了"我愿意"。</p>
+                    <div class="timeline-date">
+                        <span class="zh">2022年冬天</span>
+                        <span class="en">Winter 2022</span>
+                    </div>
+                    <img src="proposal.jpg" alt="Proposal Moment" class="timeline-image">
+                    <p class="timeline-text">
+                        <span class="zh">在飘雪的平安夜，我单膝跪地，向她许下了一生的承诺。她含着泪水说了"我愿意"。</span>
+                        <span class="en">On a snowy Christmas Eve, I got down on one knee and made a lifetime promise. With tears in her eyes, she said "Yes".</span>
+                    </p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">2024年1月1日</div>
-                    <img src="wedding.jpg" alt="婚礼现场" class="timeline-image">
-                    <p class="timeline-text">在亲朋好友的见证下，我们携手步入婚姻的殿堂，开启人生的新篇章。</p>
+                    <div class="timeline-date">
+                        <span class="zh">2024年1月1日</span>
+                        <span class="en">January 1st, 2024</span>
+                    </div>
+                    <img src="wedding.jpg" alt="Wedding Ceremony" class="timeline-image">
+                    <p class="timeline-text">
+                        <span class="zh">在亲朋好友的见证下，我们携手步入婚姻的殿堂，开启人生的新篇章。</span>
+                        <span class="en">Witnessed by family and friends, we stepped into marriage together, beginning a new chapter of our lives.</span>
+                    </p>
                 </div>
                 <div class="timeline-dot"></div>
             </div>
@@ -1800,27 +1936,42 @@
     <!-- 婚礼瞬间模块 -->
     <section id="moments" class="moments-section">
         <div class="moments-container">
-            <h2 class="moments-title">婚礼瞬间</h2>
+            <h2 class="moments-title">
+                <span class="zh">婚礼瞬间</span>
+                <span class="en">Wedding Moments</span>
+            </h2>
             <div class="moments-grid">
                 <div class="moment-card">
                     <div class="moment-image-wrapper">
-                        <img src="rings.jpg" alt="交换戒指" class="moment-image">
+                        <img src="rings.jpg" alt="Exchange Rings" class="moment-image">
                     </div>
                     <div class="moment-content">
                         <div class="moment-time">10:30 AM</div>
-                        <h3 class="moment-title">交换戒指的神圣时刻</h3>
-                        <p class="moment-description">在牧师的见证下，我们互相交换戒指，许下永恒的誓言。那一刻，幸福的泪水在彼此眼中闪烁。</p>
+                        <h3 class="moment-title">
+                            <span class="zh">交换戒指的神圣时刻</span>
+                            <span class="en">Sacred Moment of Ring Exchange</span>
+                        </h3>
+                        <p class="moment-description">
+                            <span class="zh">在牧师的见证下，我们互相交换戒指，许下永恒的誓言。那一刻，幸福的泪水在彼此眼中闪烁。</span>
+                            <span class="en">Under the witness of the priest, we exchanged rings and made eternal vows. At that moment, tears of joy sparkled in our eyes.</span>
+                        </p>
                     </div>
                 </div>
 
                 <div class="moment-card">
                     <div class="moment-image-wrapper">
-                        <img src="first-dance.jpg" alt="第一支舞" class="moment-image">
+                        <img src="first-dance.jpg" alt="First Dance | 第一支舞" class="moment-image">
                     </div>
                     <div class="moment-content">
                         <div class="moment-time">12:00 PM</div>
-                        <h3 class="moment-title">浪漫的第一支舞</h3>
-                        <p class="moment-description">在优美的音乐中，我们跳起了人生的第一支双人舞。灯光下，仿佛整个世界只剩下我们两个人。</p>
+                        <h3 class="moment-title">
+                            <span class="zh">浪漫的第一支舞</span>
+                            <span class="en">Our Romantic First Dance</span>
+                        </h3>
+                        <p class="moment-description">
+                            <span class="zh">在优美的音乐中，我们跳起了人生的第一支双人舞。灯光下，仿佛整个世界只剩下我们两个人。</span>
+                            <span class="en">In the beautiful music, we danced our first dance as a couple. Under the lights, it felt like we were the only two people in the world.</span>
+                        </p>
                     </div>
                 </div>
 
@@ -1830,8 +1981,14 @@
                     </div>
                     <div class="moment-content">
                         <div class="moment-time">2:30 PM</div>
-                        <h3 class="moment-title">甜蜜的蛋糕仪式</h3>
-                        <p class="moment-description">我们一起切下婚礼蛋糕的第一刀，分享这甜蜜的时刻。欢笑声、祝福声在宴会厅回荡。</p>
+                        <h3 class="moment-title">
+                            <span class="zh">甜蜜的蛋糕仪式</span>
+                            <span class="en">Sweet Cake Ceremony</span>
+                        </h3>
+                        <p class="moment-description">
+                            <span class="zh">我们一起切下婚礼蛋糕的第一刀，分享这甜蜜的时刻。欢笑声、祝福声在宴会厅回荡。</span>
+                            <span class="en">Together we cut the first slice of our wedding cake, sharing this sweet moment. Laughter and blessings echo through the banquet hall.</span>
+                        </p>
                     </div>
                 </div>
 
@@ -1851,36 +2008,46 @@
 
     <!-- 视频区 -->
     <section class="video-section">
-        <h2 class="video-title">珍贵的视频回忆</h2>
+        <h2 class="video-title">
+            <span class="zh">珍贵的视频回忆</span>
+            <span class="en">Precious Video Memories</span>
+        </h2>
         <div class="video-container">
             <div class="main-video-wrapper">
                 <video id="mainVideo" class="main-video" controls poster="videos/poster.jpg">
                     <source src="videos/highlight.mp4" type="video/mp4">
-                    您的浏览器不支持视频播放。
+                    <span class="zh">您的浏览器不支持视频播放。</span>
+                    <span class="en">Your browser does not support video playback.</span>
                 </video>
                 <button class="fullscreen-btn">
                     <i class="fas fa-expand"></i>
                 </button>
             </div>
             <div class="video-description">
-                <h3 class="video-current-title">婚礼精彩片段</h3>
-                <p class="video-current-desc">我们最珍贵的瞬间，都在这里定格成永恒</p>
+                <h3 class="video-current-title">
+                    <span class="zh">婚礼精彩片段</span>
+                    <span class="en">Wedding Highlights</span>
+                </h3>
+                <p class="video-current-desc">
+                    <span class="zh">我们最珍贵的瞬间，都在这里定格成永恒</span>
+                    <span class="en">Our most precious moments, frozen in time forever</span>
+                </p>
             </div>
             <div class="video-thumbnails">
-                <div class="thumbnail active" data-src="videos/highlight.mp4" data-title="婚礼精彩片段" data-desc="我们最珍贵的瞬间，都在这里定格成永恒">
-                    <img src="videos/thumb-highlight.jpg" alt="婚礼精彩片段">
+                <div class="thumbnail active" data-src="videos/highlight.mp4" data-title-zh="婚礼精彩片段" data-title-en="Wedding Highlights" data-desc-zh="我们最珍贵的瞬间，都在这里定格成永恒" data-desc-en="Our most precious moments, frozen in time forever">
+                    <img src="videos/thumb-highlight.jpg" alt="Wedding Highlights | 婚礼精彩片段">
                     <span class="thumbnail-duration">05:30</span>
                 </div>
-                <div class="thumbnail" data-src="videos/ceremony.mp4" data-title="婚礼仪式" data-desc="在众人的见证下，我们许下一生的诺言">
-                    <img src="videos/thumb-ceremony.jpg" alt="婚礼仪式">
+                <div class="thumbnail" data-src="videos/ceremony.mp4" data-title-zh="婚礼仪式" data-title-en="Wedding Ceremony" data-desc-zh="在众人的见证下，我们许下一生的诺言" data-desc-en="Under everyone's witness, we made our lifetime vows">
+                    <img src="videos/thumb-ceremony.jpg" alt="Wedding Ceremony | 婚礼仪式">
                     <span class="thumbnail-duration">08:45</span>
                 </div>
-                <div class="thumbnail" data-src="videos/party.mp4" data-title="欢乐派对" data-desc="与亲朋好友共同分享我们的喜悦时光">
-                    <img src="videos/thumb-party.jpg" alt="欢乐派对">
+                <div class="thumbnail" data-src="videos/party.mp4" data-title-zh="欢乐派对" data-title-en="Joyful Party" data-desc-zh="与亲朋好友共同分享我们的喜悦时光" data-desc-en="Sharing our joyful moments with family and friends">
+                    <img src="videos/thumb-party.jpg" alt="Joyful Party | 欢乐派对">
                     <span class="thumbnail-duration">06:20</span>
                 </div>
-                <div class="thumbnail" data-src="videos/wishes.mp4" data-title="亲友祝福" data-desc="感谢每一位亲朋好友的真挚祝福">
-                    <img src="videos/thumb-wishes.jpg" alt="亲友祝福">
+                <div class="thumbnail" data-src="videos/wishes.mp4" data-title-zh="亲友祝福" data-title-en="Family Blessings" data-desc-zh="感谢每一位亲朋好友的真挚祝福" data-desc-en="Thank you for all the heartfelt blessings from our loved ones">
+                    <img src="videos/thumb-wishes.jpg" alt="Family Blessings | 亲友祝福">
                     <span class="thumbnail-duration">07:15</span>
                 </div>
             </div>
@@ -1902,7 +2069,10 @@
 
     <!-- 相册模块 -->
     <section id="gallery" class="gallery-section">
-        <h2 class="gallery-title">婚礼相册</h2>
+        <h2 class="gallery-title">
+            <span class="zh">婚礼相册</span>
+            <span class="en">Wedding Gallery</span>
+        </h2>
         <div class="gallery-container">
             <!-- 相册图片将由 JavaScript 动态加载 -->
         </div>
@@ -1913,7 +2083,10 @@
         <span class="lightbox-close">&times;</span>
         <div class="lightbox-content">
             <img src="" alt="" class="lightbox-image">
-            <p class="lightbox-caption"></p>
+            <p class="lightbox-caption">
+                <span class="zh"></span>
+                <span class="en"></span>
+            </p>
         </div>
         <span class="lightbox-nav lightbox-prev"><i class="fas fa-chevron-left"></i></span>
         <span class="lightbox-nav lightbox-next"><i class="fas fa-chevron-right"></i></span>
@@ -1922,18 +2095,29 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <h3 class="footer-title">感谢有你们的见证</h3>
-            <p class="footer-text">感谢所有亲朋好友在这特别的日子里见证我们的幸福时刻<br> 愿我们的爱情故事永远继续书写
+            <h3 class="footer-title">
+                <span class="zh">感谢有你们的见证</span>
+                <span class="en">Thank You for Being Our Witnesses</span>
+            </h3>
+            <p class="footer-text">
+                <span class="zh">感谢所有亲朋好友在这特别的日子里见证我们的幸福时刻<br>愿我们的爱情故事永远继续书写</span>
+                <span class="en">Thank you to all family and friends for witnessing our happy moments on this special day<br>May our love story continue to be written forever</span>
             </p>
-            <div class="footer-date">2024年1月1日</div>
+            <div class="footer-date">
+                <span class="zh">2024年1月1日</span>
+                <span class="en">January 1st, 2024</span>
+            </div>
             <div class="social-links">
-                <a href="#" title="微信"><i class="fab fa-weixin"></i></a>
-                <a href="#" title="微博"><i class="fab fa-weibo"></i></a>
+                <a href="#" title="WeChat | 微信"><i class="fab fa-weixin"></i></a>
+                <a href="#" title="Weibo | 微博"><i class="fab fa-weibo"></i></a>
                 <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="抖音"><i class="fab fa-tiktok"></i></a>
+                <a href="#" title="TikTok | 抖音"><i class="fab fa-tiktok"></i></a>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2024 我们的婚礼记忆 | 永恒的爱情故事</p>
+                <p>
+                    <span class="zh">&copy; 2024 我们的婚礼记忆 | 永恒的爱情故事</span>
+                    <span class="en">&copy; 2024 Our Wedding Memory | An Eternal Love Story</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -1942,8 +2126,14 @@
     <div class="music-player">
         <div class="music-player-inner">
             <div class="music-info">
-                <span class="music-title">婚礼主题曲</span>
-                <span class="music-artist">浪漫钢琴曲</span>
+                <span class="music-title">
+                    <span class="zh">婚礼主题曲</span>
+                <span class="en">Wedding Theme</span>
+                </span>
+                <span class="music-artist">
+                    <span class="zh">浪漫钢琴曲</span>
+                <span class="en">Romantic Piano</span>
+                </span>
             </div>
             <div class="music-controls">
                 <button class="play-btn" id="playBtn">
@@ -1957,7 +2147,8 @@
         </div>
         <audio id="bgMusic" loop>
             <source src="music/wedding-theme.mp3" type="audio/mpeg">
-            您的浏览器不支持音频播放。
+            <span class="zh">您的浏览器不支持音频播放。</span>
+            <span class="en">Your browser does not support audio playback.</span>
         </audio>
     </div>
 
@@ -2056,54 +2247,53 @@
 
         // 更新祝福数据，添加更多真实的祝福内容
         const wishesData = [{
-            content: "愿你们的爱情，如同今天的阳光一样温暖，如同今天的美酒一样醇香，携手一生，白头偕老！",
-            author: "王叔叔",
+            content: {
+                zh: "愿你们的爱情，如同今天的阳光一样温暖，如同今天的美酒一样醇香，携手一生，白头偕老！",
+                en: "May your love be as warm as today's sunshine, as mellow as today's wine. Walk hand in hand through life, growing old together!"
+            },
+            author: "王叔叔 | Uncle Wang",
             date: "2024-01-01 10:30"
         }, {
-            content: "祝福你们比翼双飞，相亲相爱，在漫长的人生旅途中互相扶持，共同创造属于你们的幸福生活！",
-            author: "李阿姨",
+            content: {
+                zh: "祝福你们比翼双飞，相亲相爱，在漫长的人生旅途中互相扶持，共同创造属于你们的幸福生活！",
+                en: "May you fly together like paired wings, love each other dearly, support each other through life's long journey, and create your own happiness!"
+            },
+            author: "李阿姨 | Aunt Li",
             date: "2024-01-01 11:15"
         }, {
-            content: "今天是个特别的日子，见证了你们的甜蜜时刻。愿你们的生活充满欢笑，未来的每一天都像蜜一样甜！",
-            author: "张伯伯",
+            content: {
+                zh: "今天是个特别的日子，见证了你们的甜蜜时刻。愿你们的生活充满欢笑，未来的每一天都像蜜一样甜！",
+                en: "Today is a special day, witnessing your sweet moment. May your life be filled with laughter, and every future day be as sweet as honey!"
+            },
+            author: "张伯伯 | Uncle Zhang",
             date: "2024-01-01 12:00"
         }, {
-            content: "新婚快乐！愿你们的爱情历久弥新，未来的日子里互相包容、互相理解，共同谱写人生最美的乐章！",
-            author: "陈婶婶",
+            content: {
+                zh: "新婚快乐！愿你们的爱情历久弥新，未来的日子里互相包容、互相理解，共同谱写人生最美的乐章！",
+                en: "Congratulations! May your love stay forever fresh, with mutual understanding and acceptance, writing the most beautiful chapter of life together!"
+            },
+            author: "陈婶婶 | Aunt Chen",
             date: "2024-01-01 13:20"
-        }, {
-            content: "愿你们的生活甜甜蜜蜜，幸福美满！看到你们幸福的样子，我们都由衷地感到开心！",
-            author: "小王",
-            date: "2024-01-01 14:15"
-        }, {
-            content: "祝愿你们永浴爱河，相守一生！今天的婚礼太温馨了，满满的幸福感！",
-            author: "美美",
-            date: "2024-01-01 15:00"
-        }, {
-            content: "愿你们的爱情像美酒般愈久弥香，祝福你们！今天的婚礼太完美了！",
-            author: "大卫",
-            date: "2024-01-01 15:30"
-        }, {
-            content: "看着你们甜蜜的样子，真为你们感到开心！愿你们的爱情天长地久！",
-            author: "丽丽",
-            date: "2024-01-01 16:00"
         }];
 
         let currentPage = 0;
-        const itemsPerPage = 4; // 修改每页显示数量
+        const itemsPerPage = 4;
         const wishesGrid = document.querySelector('.wishes-grid');
         const loadMoreBtn = document.querySelector('.load-more-btn');
 
-        // 优化创建祝福卡片的函数，添加随机倾斜效果
+        // 优化创建祝福卡片的函数
         function createWishCard(wish) {
             const card = document.createElement('div');
             card.className = 'wish-card';
-            const rotation = Math.random() * 4 - 2; // 随机-2到2度之间的旋转
+            const rotation = Math.random() * 4 - 2;
             card.style.transform = `rotate(${rotation}deg) translateY(20px)`;
             card.innerHTML = `
-                <p class="wish-content">${wish.content}</p>
+                <p class="wish-content">
+                    <span class="zh">${wish.content.zh}</span>
+                    <span class="en">${wish.content.en}</span>
+                </p>
                 <div class="wish-footer">
-                    <p class="wish-author">—— ${wish.author}</p>
+                    <p class="wish-author">${wish.author}</p>
                     <p class="wish-date">${wish.date}</p>
                 </div>
             `;
@@ -2163,17 +2353,24 @@
 
         // 相册数据
         const galleryData = [{
-                src: 'gallery/ceremony1.jpg',
-                caption: '神圣的交换戒指仪式'
-            }, {
-                src: 'gallery/party1.jpg',
-                caption: '欢乐的婚礼派对'
-            }, {
-                src: 'gallery/detail1.jpg',
-                caption: '精致的婚礼布置'
-            },
-            // 添加更多图片...
-        ];
+            src: 'gallery/ceremony1.jpg',
+            caption: {
+                zh: '神圣的交换戒指仪式',
+                en: 'Sacred Ring Exchange Ceremony'
+            }
+        }, {
+            src: 'gallery/party1.jpg',
+            caption: {
+                zh: '欢乐的婚礼派对',
+                en: 'Joyful Wedding Party'
+            }
+        }, {
+            src: 'gallery/detail1.jpg',
+            caption: {
+                zh: '精致的婚礼布置',
+                en: 'Exquisite Wedding Decorations'
+            }
+        }];
 
         // 初始化相册
         const galleryContainer = document.querySelector('.gallery-container');
@@ -2187,12 +2384,13 @@
             galleryData.forEach((item, index) => {
                 const galleryItem = document.createElement('div');
                 galleryItem.className = 'gallery-item';
-                galleryItem.innerHTML = `<img src="${item.src}" alt="${item.caption}">`;
+                galleryItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.caption.zh} | ${item.caption.en}">
+                `;
 
                 galleryItem.addEventListener('click', () => openLightbox(index));
                 galleryContainer.appendChild(galleryItem);
 
-                // 添加渐入动画
                 setTimeout(() => {
                     galleryItem.classList.add('fade-in');
                 }, index * 100);
@@ -2217,7 +2415,10 @@
         function updateLightboxContent() {
             const currentImage = galleryData[currentImageIndex];
             lightboxImage.src = currentImage.src;
-            lightboxCaption.textContent = currentImage.caption;
+            const captionZh = lightboxCaption.querySelector('.zh');
+            const captionEn = lightboxCaption.querySelector('.en');
+            captionZh.textContent = currentImage.caption.zh;
+            captionEn.textContent = currentImage.caption.en;
         }
 
         // 下一张图片
@@ -2286,16 +2487,25 @@
         thumbnails.forEach(thumbnail => {
             thumbnail.addEventListener('click', () => {
                 const videoSrc = thumbnail.dataset.src;
-                const title = thumbnail.dataset.title;
-                const desc = thumbnail.dataset.desc;
+                const titleZh = thumbnail.dataset.titleZh;
+                const titleEn = thumbnail.dataset.titleEn;
+                const descZh = thumbnail.dataset.descZh;
+                const descEn = thumbnail.dataset.descEn;
 
                 // 更新视频源
                 mainVideo.src = videoSrc;
                 mainVideo.play();
 
                 // 更新标题和描述
-                videoTitle.textContent = title;
-                videoDesc.textContent = desc;
+                const titleZhSpan = videoTitle.querySelector('.zh');
+                const titleEnSpan = videoTitle.querySelector('.en');
+                const descZhSpan = videoDesc.querySelector('.zh');
+                const descEnSpan = videoDesc.querySelector('.en');
+
+                titleZhSpan.textContent = titleZh;
+                titleEnSpan.textContent = titleEn;
+                descZhSpan.textContent = descZh;
+                descEnSpan.textContent = descEn;
 
                 // 更新缩略图状态
                 thumbnails.forEach(t => t.classList.remove('active'));
@@ -2479,6 +2689,29 @@
                     showBlessing();
                 }
             }
+        });
+
+        // 语言切换功能
+        const langSwitcher = document.getElementById('langSwitcher');
+        const html = document.documentElement;
+
+        // 检查本地存储中的语言设置
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            html.setAttribute('data-lang', savedLang);
+        }
+
+        langSwitcher.addEventListener('click', () => {
+            const currentLang = html.getAttribute('data-lang');
+            const newLang = currentLang === 'zh' ? 'en' : 'zh';
+
+            html.setAttribute('data-lang', newLang);
+            localStorage.setItem('preferredLanguage', newLang);
+
+            // 更新页面标题
+            document.title = newLang === 'zh' ?
+                '我们的婚礼记忆' :
+                'Our Wedding Memory';
         });
     </script>
 </body>
