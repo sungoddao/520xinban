@@ -2651,14 +2651,25 @@
         });
 
         // 祝福语数组
-        const blessings = [
-            "愿你们携手共创美好未来",
-            "爱是永恒的誓言，愿你们白头偕老",
-            "祝福你们百年好合，幸福美满",
-            "愿你们的爱情如美酒般愈久弥香",
-            "愿你们的生活如诗如画，浪漫永驻",
-            "愿你们彼此珍惜，相守一生"
-        ];
+        const blessings = [{
+            zh: "愿你们携手共创美好未来",
+            en: "May you create a beautiful future together"
+        }, {
+            zh: "爱是永恒的誓言，愿你们白头偕老",
+            en: "Love is an eternal vow, may you grow old together"
+        }, {
+            zh: "祝福你们百年好合，幸福美满",
+            en: "Wishing you a lifetime of happiness and harmony"
+        }, {
+            zh: "愿你们的爱情如美酒般愈久弥香",
+            en: "May your love grow richer like fine wine"
+        }, {
+            zh: "愿你们的生活如诗如画，浪漫永驻",
+            en: "May your life be as beautiful as poetry and painting, forever romantic"
+        }, {
+            zh: "愿你们彼此珍惜，相守一生",
+            en: "May you cherish each other and stay together for life"
+        }];
 
         // 显示祝福弹窗
         function showBlessing() {
@@ -2666,7 +2677,22 @@
             const text = document.getElementById('blessingText');
             const randomBlessing = blessings[Math.floor(Math.random() * blessings.length)];
 
-            text.textContent = randomBlessing;
+            // Clear existing content
+            text.innerHTML = '';
+
+            // Add Chinese and English spans
+            const zhSpan = document.createElement('span');
+            zhSpan.className = 'zh';
+            zhSpan.textContent = randomBlessing.zh;
+
+            const enSpan = document.createElement('span');
+            enSpan.className = 'en';
+            enSpan.textContent = randomBlessing.en;
+
+            text.appendChild(zhSpan);
+            text.appendChild(document.createElement('br'));
+            text.appendChild(enSpan);
+
             popup.classList.add('show');
 
             // 5秒后自动关闭
